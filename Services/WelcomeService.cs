@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Discord; // Shto këtë direktivë
+using Discord;
 using Discord.WebSocket;
 using SkiaSharp;
 using ThousandSunny.Utilis;
@@ -20,20 +20,21 @@ namespace ThousandSunny.Services
 
         public WelcomeService()
         {
-            _assetsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets");
+            // Now that the working directory is set to the project root,
+            // we can simply point to the "assets" folder.
+            _assetsPath = Path.Combine(Directory.GetCurrentDirectory(), "assets");
+
             _playfairFont = SKTypeface.FromFile(Path.Combine(_assetsPath, "PlayfairDisplay-Bold.ttf"));
             _alwaysInMyHeartFont = SKTypeface.FromFile(Path.Combine(_assetsPath, "AlwaysInMyHeart.ttf"));
             _httpClient = new HttpClient();
             _random = new Random();
         }
 
-        // Metoda për komandën /bounty, thjesht kthen imazhin si MemoryStream
         public async Task<MemoryStream> CreateBountyPosterAsync(SocketGuildUser member, int bountyValue)
         {
             return await GenerateBountyPosterAsync(member, bountyValue);
         }
 
-        // Metoda për mesazhet e mirëseardhjes, dërgon bounty-n në kanal
         public async Task SendWelcomeBountyAsync(SocketGuildUser member, int bountyValue, string messageContent)
         {
             if (member == null)
@@ -49,11 +50,9 @@ namespace ThousandSunny.Services
                 var channel = member.Guild.GetTextChannel(1136334194218389685);
                 if (channel != null)
                 {
-                    // Krijimi i butonit
                     var component = new ComponentBuilder()
                         .WithButton("🧭 Log Pose", "welcome_log_pose", ButtonStyle.Success);
 
-                    // Dërgimi i mesazhit me foton dhe butonin
                     await channel.SendFileAsync(imageStream, "bounty.png", messageContent, components: component.Build());
                 }
                 else

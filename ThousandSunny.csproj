@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".env" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".env">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Discord.Net.Core" Version="3.18.0" />
     <PackageReference Include="Discord.Net.WebSocket" Version="3.18.0" />
     <PackageReference Include="dotenv.net" Version="4.0.0" />

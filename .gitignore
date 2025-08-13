@@ -1,2 +1,8 @@
-﻿.env
+﻿obj/*.nuget.*
+obj/project.assets.json
+obj/project.nuget.cache
+bin/
 .vs/
+.env
+*.user
+*.suo

@@ -1,14 +1,16 @@
 ﻿using System;
+using System.IO;
+using dotenv.net;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
-using dotenv.net;
 using Microsoft.Extensions.DependencyInjection;
 using ThousandSunny.Services;
 using ThousandSunny.Utilis;
+using ThousandSunny.Modules;
 
 namespace ThousandSunny
 {
@@ -26,6 +28,9 @@ namespace ThousandSunny
 
         public async Task MainAsync()
         {
+            string projectRoot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            Directory.SetCurrentDirectory(projectRoot);
+
             var config = new DiscordSocketConfig()
             {
                 GatewayIntents = GatewayIntents.Guilds |
@@ -45,15 +50,17 @@ namespace ThousandSunny
             _client.Ready += OnReadyAsync;
             _client.InteractionCreated += OnInteractionCreatedAsync;
 
+            // --- ADD THE NEW LINE HERE ---
+            // This gets the service from the container, which runs the constructor
+            // and subscribes to the event.
+            _serviceProvider.GetRequiredService<AutoRoleMonitor>();
+            // -----------------------------
+
+
             _client.UserJoined += async member =>
             {
-                var bountyService = _serviceProvider.GetRequiredService<BountyService>();
-                var welcomeService = _serviceProvider.GetRequiredService<WelcomeService>();
-
-                var newBerries = await bountyService.GetBerriesAsync(member.Id.ToString());
-                var randomMessage = WelcomeMessages.GetRandomMessage().Replace("@nickname", $"<@{member.Id}>");
-
-                await welcomeService.SendWelcomeBountyAsync(member, newBerries, randomMessage);
+                var bountyModule = _serviceProvider.GetRequiredService<BountyModule>();
+                await bountyModule.OnUserJoinedAsync(member);
             };
 
             // Rregulli i ri: I jep berries çdo 30 sekonda
@@ -76,8 +83,13 @@ namespace ThousandSunny
             };
 
 
-            DotEnv.Load(); // loads the .env file into environment variables
+            // Set the new current directory
+            Directory.SetCurrentDirectory(projectRoot);
 
+            // Load .env from the root folder
+            DotEnv.Load(new DotEnvOptions(envFilePaths: new[] { ".env" }));
+
+            // Read token
             string token = Environment.GetEnvironmentVariable("TOKEN");
             if (string.IsNullOrEmpty(token))
             {
@@ -94,9 +106,18 @@ namespace ThousandSunny
         private async Task OnReadyAsync()
         {
             Console.WriteLine($"🤖 Sunny u lidh si {_client.CurrentUser.Username}#{_client.CurrentUser.Discriminator}");
+
+            // Add your modules
             await _interactionService.AddModulesAsync(Assembly.GetEntryAssembly(), _serviceProvider);
-            await _interactionService.RegisterCommandsGloballyAsync(true);
+
+            // Register commands to a specific guild for instant updates during development
+            // This is much faster and prevents commands from getting stuck.
+            await _interactionService.RegisterCommandsToGuildAsync(1136333653576781904);
+
+            // Optional: Print a message to confirm commands were registered
+            Console.WriteLine("Slash commands have been registered.");
         }
+
 
         private async Task OnInteractionCreatedAsync(SocketInteraction interaction)
         {
@@ -110,7 +131,9 @@ namespace ThousandSunny
                 .AddSingleton(_client)
                 .AddSingleton<BountyService>()
                 .AddSingleton<WelcomeService>()
+                .AddSingleton<AutoRoleMonitor>()
                 .AddSingleton(x => new InteractionService(x.GetRequiredService<DiscordSocketClient>().Rest))
+                .AddSingleton<BountyModule>()
                 .BuildServiceProvider();
         }
 
