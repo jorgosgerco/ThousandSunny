@@ -74,6 +74,15 @@
           }
         }
       },
+      "dotenv.net/4.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/dotenv.net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/dotenv.net.dll": {}
+        }
+      },
       "DotNetEnv/3.1.1": {
         "type": "package",
         "dependencies": {
@@ -1764,6 +1773,20 @@
         "lib/netstandard2.0/Discord.Net.WebSocket.xml",
         "lib/netstandard2.1/Discord.Net.WebSocket.dll",
         "lib/netstandard2.1/Discord.Net.WebSocket.xml"
+      ]
+    },
+    "dotenv.net/4.0.0": {
+      "sha512": "SM8Qp6L/E3tsLKDFkV23M8WHyp5l1YqsXkylQDjQjV02Z2tUL3J6j1gV0gMs4L6YtoSB7jZPw2dnDdnpEXnpNQ==",
+      "type": "package",
+      "path": "dotenv.net/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "dotenv.net.4.0.0.nupkg.sha512",
+        "dotenv.net.nuspec",
+        "lib/netstandard2.0/dotenv.net.dll",
+        "lib/netstandard2.1/dotenv.net.dll"
       ]
     },
     "DotNetEnv/3.1.1": {
@@ -5475,7 +5498,8 @@
       "Discord.Net.WebSocket >= 3.18.0",
       "DotNetEnv >= 3.1.1",
       "Microsoft.Extensions.DependencyInjection >= 9.0.8",
-      "SkiaSharp >= 3.119.0"
+      "SkiaSharp >= 3.119.0",
+      "dotenv.net >= 4.0.0"
     ]
   },
   "packageFolders": {
@@ -5540,6 +5564,10 @@
           "SkiaSharp": {
             "target": "Package",
             "version": "[3.119.0, )"
+          },
+          "dotenv.net": {
+            "target": "Package",
+            "version": "[4.0.0, )"
           }
         },
         "imports": [

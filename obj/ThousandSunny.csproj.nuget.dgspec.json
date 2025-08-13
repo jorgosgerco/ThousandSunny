@@ -63,6 +63,10 @@
             "SkiaSharp": {
               "target": "Package",
               "version": "[3.119.0, )"
+            },
+            "dotenv.net": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             }
           },
           "imports": [

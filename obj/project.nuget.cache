@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DjIcm7HeRgU+kyeXWJYDJwkxt3JZkBZy4VbbjAbcCDi2H8bjYe1jfkWWqQCUrcOkcp7XIZTDY90ezStLiwd7eg==",
+  "dgSpecHash": "Hc6zvOD2uuKeYsSsPg/w+GH+UfiWsk/aLYIQVtJw4THq7cedXGmonc/WYwpB8Zi1PNLve1fHXHQRpJBpSSvH/w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jorgos\\Desktop\\ThousandSunny\\ThousandSunny.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Jorgos\\.nuget\\packages\\discord.net.interactions\\3.18.0\\discord.net.interactions.3.18.0.nupkg.sha512",
     "C:\\Users\\Jorgos\\.nuget\\packages\\discord.net.rest\\3.18.0\\discord.net.rest.3.18.0.nupkg.sha512",
     "C:\\Users\\Jorgos\\.nuget\\packages\\discord.net.websocket\\3.18.0\\discord.net.websocket.3.18.0.nupkg.sha512",
+    "C:\\Users\\Jorgos\\.nuget\\packages\\dotenv.net\\4.0.0\\dotenv.net.4.0.0.nupkg.sha512",
     "C:\\Users\\Jorgos\\.nuget\\packages\\dotnetenv\\3.1.1\\dotnetenv.3.1.1.nupkg.sha512",
     "C:\\Users\\Jorgos\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Jorgos\\.nuget\\packages\\microsoft.extensions.configuration\\1.1.2\\microsoft.extensions.configuration.1.1.2.nupkg.sha512",

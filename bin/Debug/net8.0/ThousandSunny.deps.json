@@ -13,7 +13,8 @@
           "Discord.Net.WebSocket": "3.18.0",
           "DotNetEnv": "3.1.1",
           "Microsoft.Extensions.DependencyInjection": "9.0.8",
-          "SkiaSharp": "3.119.0"
+          "SkiaSharp": "3.119.0",
+          "dotenv.net": "4.0.0"
         },
         "runtime": {
           "ThousandSunny.dll": {}
@@ -68,6 +69,14 @@
           "lib/net8.0/Discord.Net.WebSocket.dll": {
             "assemblyVersion": "3.18.0.0",
             "fileVersion": "3.18.0.0"
+          }
+        }
+      },
+      "dotenv.net/4.0.0": {
+        "runtime": {
+          "lib/netstandard2.1/dotenv.net.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -957,6 +966,13 @@
       "sha512": "sha512-ZAAb/qw+P7Yql1YaP6RzNV7zZRFjAbEdO7RLrKpwCVSc35iGSoYgwAr358AjQ4wAz+GQxDxnbrJM/zcqjWJ1Uw==",
       "path": "discord.net.websocket/3.18.0",
       "hashPath": "discord.net.websocket.3.18.0.nupkg.sha512"
+    },
+    "dotenv.net/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SM8Qp6L/E3tsLKDFkV23M8WHyp5l1YqsXkylQDjQjV02Z2tUL3J6j1gV0gMs4L6YtoSB7jZPw2dnDdnpEXnpNQ==",
+      "path": "dotenv.net/4.0.0",
+      "hashPath": "dotenv.net.4.0.0.nupkg.sha512"
     },
     "DotNetEnv/3.1.1": {
       "type": "package",

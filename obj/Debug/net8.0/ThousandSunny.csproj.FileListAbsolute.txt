@@ -35,3 +35,5 @@ C:\Users\Jorgos\Desktop\ThousandSunny\obj\Debug\net8.0\refint\ThousandSunny.dll
 C:\Users\Jorgos\Desktop\ThousandSunny\obj\Debug\net8.0\ThousandSunny.pdb
 C:\Users\Jorgos\Desktop\ThousandSunny\obj\Debug\net8.0\ThousandSunny.genruntimeconfig.cache
 C:\Users\Jorgos\Desktop\ThousandSunny\obj\Debug\net8.0\ref\ThousandSunny.dll
+C:\Users\Jorgos\Desktop\ThousandSunny\bin\Debug\net8.0\dotenv.net.dll
+C:\Users\Jorgos\Desktop\ThousandSunny\obj\Debug\net8.0\ThousandSunny.sourcelink.json

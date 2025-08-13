@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
+using dotenv.net;
 using Microsoft.Extensions.DependencyInjection;
 using ThousandSunny.Services;
 using ThousandSunny.Utilis;
@@ -73,6 +74,9 @@ namespace ThousandSunny
                     await bountyService.SetLastMessageTimeAsync(userId, currentTime);
                 }
             };
+
+
+            DotEnv.Load(); // loads the .env file into environment variables
 
             string token = Environment.GetEnvironmentVariable("TOKEN");
             if (string.IsNullOrEmpty(token))
